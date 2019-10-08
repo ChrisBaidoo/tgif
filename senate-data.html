@@ -9,44 +9,67 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <!-- for the navs: nav pills and nav tabs, flex   -->
 
 <body class="container" id="top">
 
-    <div class="container floating">
-
-        <img src="./image/tgif-logo.png" alt="man with magnifying glass">
-
-        <h2>Transparent Government in Fact</h2>
-
-        <a href="mailto:info@tgif.net" target="_top"><i class="fa fa-envelope"></i> info@tgif.net</a>
+    <div class="row ">
+        <div class="col-md-3 col-sm-6 mb-30px">
+            <img src="./image/tgif-logo.png" alt="man with magnifying glass">
+        </div>
+        <div class="col-md-9 col-sm-6 align-self-center pull-left">
+            <h1>Transparent Government in Fact</h1>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2 col-sm-2">
+            <a class="email" href="mailto:info@tgif.net" target="_top"><i class="fa fa-envelope"></i> info@tgif.net</a>
+        </div>
     </div>
 
-    <nav class="navbar">
-        <a class="nav-link nav-item" href="./index.html">Home</a>
-        <a class="nav-link nav-item" href="./senate-data.html">Senate</a>
-        <a class="nav-link nav-item" href="./house-data.html">House</a>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light nav-tabs">
 
+        <a href="./index.html" class="navbar nav-item nav-link">Home</a>
 
+        <div class="dropdown">
+
+            <a class="nav-item nav-link active dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
+
+            <div class="dropdown-menu">
+                <a class="navbar nav-item nav-link  active" href="./senate-data.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-data.html">House</a>
+            </div>
+        </div>
 
         <div class="dropdown">
 
             <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
-                aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
+                aria-haspopup="true" aria-expanded="false" href="#">Attendance</a>
 
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Senate</a>
-                <a class="dropdown-item" href="#">House</a>
+                <a class="nav-link nav-item" href="./senate-data.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-data.html">House</a>
             </div>
         </div>
 
+        <div class="dropdown">
 
+            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Party Loyalty</a>
 
-
-
+            <div class="dropdown-menu">
+                <a class="nav-link nav-item" href="./senate-data.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-data.html">House</a>
+            </div>
+        </div>
     </nav>
+
+    <br>
+    <br>
 
 
     <section class="card">
@@ -73,7 +96,7 @@
     <thead class="thead-light">
 
     </thead>
-    <table class="table " id="tabledata">
+    <table class="table" id="tabledata">
         <tr>
             <th id="test">Senator</th>
             <th>Party
@@ -177,9 +200,17 @@
 
     <script src="./js/pro-congress-113-senate.js"></script>
     <script src="./js/main.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="./css/main.css">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"> </script>
 </body>
 
 </html>

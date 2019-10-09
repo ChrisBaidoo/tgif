@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Senate Attendance</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<!-- for the navs: nav pills and nav tabs, flex   -->
+
+<body class="container" id="top">
+
+    <div class="row ">
+        <div class="col-md-3 col-sm-6 mb-30px">
+            <img src="./image/tgif-logo.png" alt="man with magnifying glass">
+        </div>
+        <div class="col-md-9 col-sm-6 align-self-center pull-left">
+            <h1>Transparent Government in Fact</h1>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2 col-sm-2">
+            <a class="email" href="mailto:info@tgif.net" target="_top"><i class="fa fa-envelope"></i> info@tgif.net</a>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light nav-tabs">
+
+        <a href="./index.html" class="navbar nav-item nav-link">Home</a>
+
+        <div class="dropdown">
+
+            <a class="nav-item nav-link active dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
+
+            <div class="dropdown-menu">
+                <a class="navbar nav-item nav-link  active" href="./senate-data.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-data.html">House</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+
+            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Attendance</a>
+
+            <div class="dropdown-menu">
+                <a class="nav-link nav-item" href="./senate-attendance.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-attendance.html">House</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+
+            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Party Loyalty</a>
+
+            <div class="dropdown-menu">
+                <a class="nav-link nav-item" href="./senate-party-loyalty.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-party-loyalty.html">House</a>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+
+    <section class="card">
+        <div class="card-body">
+
+            <div class="row ">
+                <div class="col-md-6 col-sm-6 mb-30px">
+                    <h4>Party Loyalty</h4>
+                    <p>
+                        Those who consider themselves to be strong partisans, strong Democrats and strong Republicans
+                        respectively, tend to be the most faithful in voting for their party's nominee for office and
+                        legislation that backs their party's agenda.
+                    </p>
+
+                    <p>
+                        The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator
+                        stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for
+                        the most formal matters, as a roll-call of all 435 representatives takes quite some time;
+                        normally, members vote by electronic device. In the case of a tie, the motion in question fails.
+                        In the Senate, the Vice President may (if present) cast the tiebreaking vote.
+                    </p>
+
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="text-aling-right"></div>
+                    <h4>Senate at a glance</h4>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="column width_1">Party</th>
+                                <th class="column width_1">Number of Reps</th>
+                                <th class="column width_1">% Voted with Party</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Republicans</td>
+                                <td>46</td>
+                                <td>87.15 %</td>
+                            </tr>
+                            <tr>
+                                <td>Democrats</td>
+                                <td>57</td>
+                                <td>96.97 %</td>
+                            </tr>
+                            <tr>
+                                <td>Independents</td>
+                                <td>2</td>
+                                <td>95.18 %</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>105</td>
+                                <td>93.66 %</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <div class="top">
+        <a href="#top">Back to the top</a>
+    </div>
+
+
+    <footer class="page-footer font-small blue">
+        <div class="footer-copyright text-center py-3"> &copy; 2019 Copyright: All Rights Reserved
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- <pre id="senate-data"></pre> -->
+
+    <script src="./js/pro-congress-113-senate.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="/Users/christianbaidoo/Desktop/TGIF/js/statistics.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"> </script>
+</body>
+
+</html>

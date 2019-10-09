@@ -15,7 +15,6 @@ let percentage = [];
 function table() {
     var results = document.getElementById("tabledata");
 
-    // results.innerHTML += "<tr><td>User ID</td><td>First Name</td><td>Last Name</td><td>latitude</td><td>longitude</td></tr>";
     for (var obj in members) {
         //Loop through the object to get each objects data
         results.innerHTML += "<tr><td>" + members[obj].first_name + " " + members[obj].middle_name + " " + members[obj].last_name + "</td><td>" +

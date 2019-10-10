@@ -2,17 +2,8 @@ body {
     margin: 30px;
 }
 
-/* .top {
-    margin-top: 50px;
-} */
-
-.history {
-    /* margin-top: 20px; */
-}
-
 .header {
     width: 100%;
-    /* margin-top: 20px; */
 }
 
 
@@ -23,9 +14,4 @@ h1 {
 img {
     width: 170px;
     border-radius: 6px;
-}
-
-.email {
-    /* justify-content: flex-end;
-    align-self: flex-end; */
 }

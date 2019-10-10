@@ -6,28 +6,29 @@ console.log(arrayOfMembersOfTheSenate[0].members[2].first_name)
 let members = arrayOfMembersOfTheSenate[0].members
 
 console.log(members)
-let fullname = [];
-let party = [];
-let state = [];
-let seniority = [];
-let percentage = [];
+
+
+var results = document.getElementById("tabledata");
+console.log(results)
 
 function table() {
-    var results = document.getElementById("tabledata");
+    for (var member in members) {
+        if (members[member].middle_name == null) {
+            members[member].middle_name = ""
+        }
+        //Loop through members array to get each member data and populate the table
+        results.innerHTML += "<tr><td>" + members[member].first_name + " " + members[member].middle_name + " " + members[member].last_name + "</td><td>" +
+            members[member].party + "</td><td>" +
+            members[member].state + "</td><td>" +
+            members[member].seniority + "</td><td>" +
+            members[member].votes_with_party_pct + " %" + "</td></tr>";
 
-    for (var obj in members) {
-        //Loop through the object to get each objects data
-        results.innerHTML += "<tr><td>" + members[obj].first_name + " " + members[obj].middle_name + " " + members[obj].last_name + "</td><td>" +
-            members[obj].party + "</td><td>" +
-            members[obj].state + "</td><td>" +
-            members[obj].seniority + "</td><td>" +
-            members[obj].votes_with_party_pct + " %" + "</td></tr>";
     }
 }
 
 window.onload = table();
 
-function myFunction() {
+function showMoreOrLess() {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
     var btnText = document.getElementById("myBtn");
@@ -42,9 +43,6 @@ function myFunction() {
         moreText.style.display = "inline";
     }
 }
-
-
-
 
 
 // document.write('table');

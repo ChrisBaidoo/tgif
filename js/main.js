@@ -1,7 +1,7 @@
 // document.getElementById("senate-data").innerHTML = JSON.stringify(data, null, 2);
-let arrayOfMembersOfTheSenate = data.results
+let arrayOfMembersOfTheSenate = data.results //change the variable name to universal
 
-console.log(arrayOfMembersOfTheSenate[0].members[2].first_name)
+// console.log(arrayOfMembersOfTheSenate[0].members[2].first_name)
 
 let members = arrayOfMembersOfTheSenate[0].members
 
@@ -17,7 +17,7 @@ function table() {
             members[member].middle_name = ""
         }
         //Loop through members array to get each member data and populate the table
-        results.innerHTML += "<tr><td>" + members[member].first_name + " " + members[member].middle_name + " " + members[member].last_name + "</td><td>" +
+        results.innerHTML += "<tr><td>" + "<a href='" + members[member].url + "'>" + members[member].first_name + ' ' + members[member].middle_name + " " + members[member].last_name + " </a>" + "</td><td>" +
             members[member].party + "</td><td>" +
             members[member].state + "</td><td>" +
             members[member].seniority + "</td><td>" +
@@ -28,6 +28,7 @@ function table() {
 
 window.onload = table();
 
+//The button to show more or less text
 function showMoreOrLess() {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
@@ -43,6 +44,54 @@ function showMoreOrLess() {
         moreText.style.display = "inline";
     }
 }
+
+
+// let republicanarray = [];
+// let democratarray = [];
+// let independentarray = [];
+
+// for (let member in members) {
+//     //Loop through the object to get each objects data
+//     if (members[member].party === "D") {
+//         democratarray.push(members[member])
+//     } else if (members[member].party === "I") {
+//         independentarray.push(members[member])
+
+//     } else if (members[member].party === "R") {
+//         republicanarray.push(members[member])
+//     }
+// };
+
+
+
+
+//To filter the array
+
+// function table() {
+//     let republican = document.querySelector('#republican')
+//     republican.addEventListener("click", function () {
+//         if (republican.checked) {
+//             for (var member in republicanarray) {
+//                 if (republicanarray[member].middle_name == null) {
+//                     republicanarray[member].middle_name = ""
+//                 }
+//                 //Loop through republicanarray array to get each member data and populate the table
+//                 results.innerHTML += "<tr><td>" + "<a href='" + republicanarray[member].url + "'>" + republicanarray[member].first_name + ' ' + republicanarray[member].middle_name + " " + republicanarray[member].last_name + " </a>" + "</td><td>" +
+//                     republicanarray[member].party + "</td><td>" +
+//                     republicanarray[member].state + "</td><td>" +
+//                     republicanarray[member].seniority + "</td><td>" +
+//                     republicanarray[member].votes_with_party_pct + " %" + "</td></tr>";
+
+//             }
+//         }
+//     })
+
+
+// }
+
+// window.onload = table();
+
+//Filtering works for the republican can we create a global variable called a new array and push stuff inside each time? 
 
 
 // document.write('table');

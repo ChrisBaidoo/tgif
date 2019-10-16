@@ -12,7 +12,7 @@ let statistics = {
 }
 
 
-
+//Sort the Democrats, Independents and Republicans
 for (let member in members) {
     //Loop through the object to get each objects data
     if (members[member].party === "D") {
@@ -25,18 +25,74 @@ for (let member in members) {
     }
 };
 
+let tableBody = document.getElementById("senate-attendance");
 
-//To find the most engaged
+
+// Find average % Voted with Party For Demo
+let percentageForDemocrats = []
+let averagePercentageForDemocrats = []
+for (let member in statistics.numberOfDemocrats) {
+    percentageForDemocrats.push(statistics.numberOfDemocrats[member].votes_with_party_pct)
+}
+
+averagePercentageForDemocrats = percentageForDemocrats.reduce((a, b) => a + b, 0) / percentageForDemocrats.length
+
+
+// Find average % Voted with Party For Independents
+
+let percentageForIndenpendents = []
+let averagePercentageForIndependents = []
+for (let member in statistics.numberOfIndependents) {
+    percentageForIndenpendents.push(statistics.numberOfIndependents[member].votes_with_party_pct)
+}
+
+averagePercentageForIndependents = percentageForIndenpendents.reduce((a, b) => a + b, 0) / percentageForIndenpendents.length
+
+
+// Find average % Voted with Party For Republicans 
+let percentageForRepublicans = []
+let averagePercentageForRepublicans = []
+for (let member in statistics.numberOfRepublicans) {
+    percentageForRepublicans.push(statistics.numberOfRepublicans[member].votes_with_party_pct)
+    averagePercentageForRepublicans = percentageForRepublicans.reduce((a, b) => a + b, 0) / percentageForRepublicans.length
+}
+
+
+//Find the total Party Members
+
+let percentageForTotalPartyMembers = []
+let averagePercentageForTotalPartyMembers = []
+for (let member in members) {
+    percentageForTotalPartyMembers.push(members[member].votes_with_party_pct)
+}
+averagePercentageForTotalPartyMembers = percentageForTotalPartyMembers.reduce((a, b) => a + b, 0) / percentageForTotalPartyMembers.length
+
+
+
+function table() {
+    tableBody.innerHTML += "<tr><td>" +
+        "Republican" + "</td><td>" + statistics.numberOfRepublicans.length + "</td><td>" + averagePercentageForRepublicans.toFixed(2) + " %" + "</td></tr>" +
+        "<tr><td>" +
+        "Democrats" + "</td><td>" + statistics.numberOfDemocrats.length + "</td><td>" + averagePercentageForDemocrats.toFixed(2) + " %" + "</td></tr>" +
+        "<tr><td>" +
+        "Independents" + "</td><td>" + statistics.numberOfIndependents.length + "</td><td>" + averagePercentageForIndependents.toFixed(2) + " %" + "</td></tr>" +
+        "<tr><td>" +
+        "Total" + "</td><td>" + percentageForTotalPartyMembers.length + "</td><td>" + averagePercentageForTotalPartyMembers.toFixed(2) + " %" + "</td></tr>"
+}
+
+
+window.onload = table();
+
+////////////////////////////////////////////////////////////////
+
+// //To find the most engaged
+
+let bottomTenPercentOfMissedVotes = [];
+let topTenPercentOfMissedVotes = [];
+
+
 
 function lowerTopTen() {
-    for (let member in members) {
-        statistics.missedVotePercentage.push(members[member].missed_votes_pct)
-    }
-    console.log(statistics.missedVotePercentage.sort())
-
-
-    let bottomTenPercentOfMissedVotes = [];
-
     sortMembers = members
 
     sorted = sortMembers.sort(function (a, b) {
@@ -52,25 +108,33 @@ function lowerTopTen() {
     for (let i = 0; i < bottomTenPercentOfMissedVotes.length; i++) {
         console.log(bottomTenPercentOfMissedVotes[i].first_name)
     }
-
 }
-
-//find two things in the array, the percentage and the mix
-
 
 lowerTopTen();
 
-//To find the least engaged
+let tableBodyTwo = document.getElementById("most-engaged");
+
+
+function mostEngagedTable() {
+    for (let member in bottomTenPercentOfMissedVotes) {
+        if (bottomTenPercentOfMissedVotes[member].middle_name == null) {
+            bottomTenPercentOfMissedVotes[member].middle_name = ""
+        }
+        //Loop through members array to get each member data and populate the table
+        tableBodyTwo.innerHTML += "<tr><td>" + "<a href='" + bottomTenPercentOfMissedVotes[member].url + "'>" + bottomTenPercentOfMissedVotes[member].first_name + ' ' + bottomTenPercentOfMissedVotes[member].middle_name + " " + bottomTenPercentOfMissedVotes[member].last_name + " </a>" + "</td><td>" +
+            bottomTenPercentOfMissedVotes[member].missed_votes + "</td><td>" +
+            bottomTenPercentOfMissedVotes[member].missed_votes_pct + " %" + "</td>"
+    }
+}
+
+window.onload = mostEngagedTable();
+
+
+///////////////////////////////////////////////////////
+// //To find the least engaged
+
 
 function UpperTopTen() {
-    for (let member in members) {
-        statistics.missedVotePercentage.push(members[member].missed_votes_pct)
-    }
-    console.log(statistics.missedVotePercentage.sort())
-
-
-    let bottomTenPercentOfMissedVotes = [];
-
     sortMembers = members
 
     sorted = sortMembers.sort(function (a, b) {
@@ -79,236 +143,81 @@ function UpperTopTen() {
 
     for (member in sorted) {
         if (member < ((sorted.length) * 0.1))
-            bottomTenPercentOfMissedVotes.push(members[member])
+            topTenPercentOfMissedVotes.push(members[member])
     }
-    console.log(bottomTenPercentOfMissedVotes)
+    console.log(topTenPercentOfMissedVotes)
 
-    for (let i = 0; i < bottomTenPercentOfMissedVotes.length; i++) {
-        console.log(bottomTenPercentOfMissedVotes[i].first_name)
+    for (let i = 0; i < topTenPercentOfMissedVotes.length; i++) {
+        console.log(topTenPercentOfMissedVotes[i].first_name)
     }
 }
 
 UpperTopTen();
 
+let tableBodyThree = document.getElementById("least-engaged");
+
+
+function leastEngagedTable() {
+    for (let member in topTenPercentOfMissedVotes) {
+        if (topTenPercentOfMissedVotes[member].middle_name == null) {
+            topTenPercentOfMissedVotes[member].middle_name = ""
+        }
+        //Loop through members array to get each member data and populate the table
+        tableBodyThree.innerHTML += "<tr><td>" + "<a href='" + topTenPercentOfMissedVotes[member].url + "'>" + topTenPercentOfMissedVotes[member].first_name + ' ' + topTenPercentOfMissedVotes[member].middle_name + " " + topTenPercentOfMissedVotes[member].last_name + " </a>" + "</td><td>" +
+            topTenPercentOfMissedVotes[member].missed_votes + "</td><td>" +
+            topTenPercentOfMissedVotes[member].missed_votes_pct + " %" + "</td>"
+    }
+}
+
+window.onload = leastEngagedTable();
+
+
+
+////////////////////////////////
+
+// Find the most loyal 
+
+let bottomTenPercentOfVotesWithParty = [];
 
 
 function loyalUpperTopTen() {
-    // for (let member in members) {
-    //     statistics.missedVotePercentage.push(members[member].missed_votes_pct)
-    // }
-    // console.log(statistics.missedVotePercentage.sort())
-
-
-    let bottomTenPercentOfMissedVotes = [];
-
     sortMembers = members
 
     sorted = sortMembers.sort(function (a, b) {
         return b.votes_with_party_pct - a.votes_with_party_pct;
     })
-
-    for (member in sorted) {
-        if (member < ((sorted.length) * 0.1))
-            bottomTenPercentOfMissedVotes.push(sorted[member])
-    }
-    console.log(bottomTenPercentOfMissedVotes)
-
-    for (let i = 0; i < bottomTenPercentOfMissedVotes.length; i++) {
-        console.log(bottomTenPercentOfMissedVotes[i].first_name)
-    }
-}
-
-
-loyalUpperTopTen()
-
-
-function loyalLowerTopTen() {
-    let bottomTenPercentOfMissedVotes = [];
-
-    sortMembers = members
-
-    sorted = sortMembers.sort(function (a, b) {
-        return a.votes_with_party_pct - b.votes_with_party_pct;
-    })
-
-    for (member in sorted) {
-        if (member < ((sorted.length) * 0.1)) {
-            bottomTenPercentOfMissedVotes.push(sorted[member])
-        } else if (sorted[member] == sorted[member - 1]) {
-            bottomTenPercentOfMissedVotes.push(sorted[member]);
-        }
-        console.log(bottomTenPercentOfMissedVotes)
-
-        for (let i = 0; i < bottomTenPercentOfMissedVotes.length; i++) {
-            console.log(bottomTenPercentOfMissedVotes[i].first_name)
-        }
-    }
-
-}
-
-loyalLowerTopTen();
-
-
-
-
-
-//To find the most loyal
-
-// function upperTopTenLoyal () {
-//     let loyalUpperTopTen = [];
-
-//     sortMembers = members
-
-//     sorted = sortMembers.sort(function (a, b) {
-//         return b.votes_with_party_pct - a.votes_with_party_pct;
-//     })
-
-//     console.log(sorted)
-
-//     for (member in sorted) {
-//         if (member < ((sorted.length) * 0.1)) {
-//             loyalUpperTopTen.push(sorted[member])
-//         }
-//         console.log(loyalUpperTopTen)
-
-//         for (let i = 0; i < loyalUpperTopTen.length; i++) {
-//             console.log(loyalUpperTopTen[i].first_name)
-//         }
-//     }
-// }
-
-// // } else if (members[member] == members[member - 1]) {
-// //     loyalUpperTopTen.push(members[member]);
-
-
-// upperTopTenLoyal();
-
-
-//To find the least loyal
-
-function lowerTopTenLoyal() {
-    let loyaLowerTopTen = [];
-
-    sortMembers = members
-
-    sorted = sortMembers.sort(function (a, b) {
-        return a.votes_with_party_pct - b.votes_with_party_pct;
-    })
     console.log(sorted)
 
 
+    for (member in sorted) {
+        if (member < ((sorted.length) * 0.1)) {
+            bottomTenPercentOfVotesWithParty.push(sorted[member])
+        } else if (sorted[member] == sorted[member - 1]) {
+            bottomTenPercentOfVotesWithParty.push(sorted[member]);
+        }
+        console.log(bottomTenPercentOfVotesWithParty)
+    }
 }
 
-//     for (member in members) {
-//         if (member < ((sorted.length) * 0.1)) {
-//             loyaLowerTopTen.push(members[member])
-//         }
-//         for (let i = 0; i < loyaLowerTopTen.length; i++) {
-//             console.log(loyaLowerTopTen[i].first_name)
-//         }
-//     }
-// }
+
+loyalUpperTopTen();
+
+let tableBodyFour = document.getElementById("least-loyal");
 
 
-lowerTopTenLoyal();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function bottomTenPercentOfMissedVotes() { //least engaged
-//     var votes = [];
-//     var lowestTenPercent = [];
-//     members.sort(function (a, b) {
-//         return a.missed_votes_pct - b.missed_votes_pct;
-//     });
-//     for (i = 0; i < members.length; i++) {
-//         votes.push(members[i]);
-//     }
-
-//     for (i = 0; i < votes.length; i++) {
-//         if (i < ((votes.length) * 0.1)) {
-//             lowestTenPercent.push(votes[i]);
-//         } else if (votes[i] == votes[i - 1]) {
-//             lowestTenPercent.push(votes[i]);
-//         } else {
-//             break;
-//         }
-//     }
-//     return lowestTenPercent;
-// }
-
-
-
-
-
-
-
-
-
-console.log(statistics.numberOfDemocrats.length) //210
-console.log(statistics.numberOfIndependents.length) //0
-console.log(statistics.numberOfRepublicans.length) //240
-
-
-
-// Find average % Voted with Party For Demo
-for (let member in statistics.numberOfDemocrats) {
-    statistics.percentOfDemo.push(statistics.numberOfDemocrats[member].votes_with_party_pct)
-}
-console.log(
-    statistics.percentOfDemo.reduce((a, b) => a + b, 0) / statistics.percentOfDemo.length
-)
-
-
-// Find average % Voted with Party For Independents
-for (let member in statistics.numberOfIndependents) {
-    statistics.percentOfInde.push(statistics.numberOfIndependents[member].votes_with_party_pct)
+function mostLoyaTable() {
+    for (let member in bottomTenPercentOfVotesWithParty) {
+        if (bottomTenPercentOfVotesWithParty[member].middle_name == null) {
+            bottomTenPercentOfVotesWithParty[member].middle_name = ""
+        }
+        //Loop through members array to get each member data and populate the table
+        tableBodyFour.innerHTML += "<tr><td>" + "<a href='" + bottomTenPercentOfVotesWithParty[member].url + "'>" + bottomTenPercentOfVotesWithParty[member].first_name + ' ' + bottomTenPercentOfVotesWithParty[member].middle_name + " " + bottomTenPercentOfVotesWithParty[member].last_name + " </a>" + "</td><td>" +
+            bottomTenPercentOfVotesWithParty[member].missed_votes + "</td><td>" +
+            bottomTenPercentOfVotesWithParty[member].missed_votes_pct + " %" + "</td>"
+    }
 }
 
-console.log(statistics.numberOfIndependents)
-
-console.log(
-    statistics.percentOfInde.reduce((a, b) => a + b, 0) / statistics.percentOfInde.length
-)
-
-// Find average % Voted with Party For Rep
-for (let member in statistics.numberOfRepublicans) {
-    statistics.percentOfRep.push(statistics.numberOfRepublicans[member].votes_with_party_pct)
-}
-console.log(
-    statistics.percentOfRep.reduce((a, b) => a + b, 0) / statistics.percentOfRep.length
-)
-
-//Find the total Party Members
+window.onload = mostLoyaTable();
 
 
-
-// Find average % Voted for Total
-
-for (let member in members) {
-    statistics.percentOfTotal.push(members[member].votes_with_party_pct)
-}
-console.log(
-    statistics.percentOfTotal.reduce((a, b) => a + b, 0) / statistics.percentOfTotal.length)
+// loyalUpperTopTen()

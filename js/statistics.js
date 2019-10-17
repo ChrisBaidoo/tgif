@@ -25,8 +25,6 @@ for (let member in members) {
     }
 };
 
-let tableBody = document.getElementById("senate-attendance");
-
 
 // Find average % Voted with Party For Demo
 let percentageForDemocrats = []
@@ -58,7 +56,8 @@ for (let member in statistics.numberOfRepublicans) {
 }
 
 
-//Find the total Party Members
+//Senate at a glance
+
 
 let percentageForTotalPartyMembers = []
 let averagePercentageForTotalPartyMembers = []
@@ -67,10 +66,11 @@ for (let member in members) {
 }
 averagePercentageForTotalPartyMembers = percentageForTotalPartyMembers.reduce((a, b) => a + b, 0) / percentageForTotalPartyMembers.length
 
+let tableBody6 = document.getElementById("senate-attendance");
 
 
 function table() {
-    tableBody.innerHTML += "<tr><td>" +
+    tableBody6.innerHTML += "<tr><td>" +
         "Republican" + "</td><td>" + statistics.numberOfRepublicans.length + "</td><td>" + averagePercentageForRepublicans.toFixed(2) + " %" + "</td></tr>" +
         "<tr><td>" +
         "Democrats" + "</td><td>" + statistics.numberOfDemocrats.length + "</td><td>" + averagePercentageForDemocrats.toFixed(2) + " %" + "</td></tr>" +
@@ -112,10 +112,11 @@ function lowerTopTen() {
 
 lowerTopTen();
 
-let tableBodyTwo = document.getElementById("most-engaged");
 
 
 function mostEngagedTable() {
+    let tableBodyTwo = document.getElementById("most-engaged");
+
     for (let member in bottomTenPercentOfMissedVotes) {
         if (bottomTenPercentOfMissedVotes[member].middle_name == null) {
             bottomTenPercentOfMissedVotes[member].middle_name = ""

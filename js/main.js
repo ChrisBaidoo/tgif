@@ -1,92 +1,205 @@
-// document.getElementById("senate-data").innerHTML = JSON.stringify(data, null, 2);
-let arrayOfMembersOfTheSenate = data.results //change the variable name to universal
+let arrayOfMembersOfTheSenate = data.results
 
-// console.log(arrayOfMembersOfTheSenate[0].members[2].first_name)
 
 let members = arrayOfMembersOfTheSenate[0].members
-let republicanarray = [];
-let democratarray = [];
-let independentarray = [];
 
-for (let member in members) {
-    //Loop through the object to get each objects data
-    if (members[member].party === "D") {
-        democratarray.push(members[member])
-    } else if (members[member].party === "I") {
-        independentarray.push(members[member])
 
-    } else if (members[member].party === "R") {
-        republicanarray.push(members[member])
+
+
+console.log(members)
+
+
+let republican = document.querySelector('#republican');
+let democrats = document.querySelector('#democrat')
+let independents = document.querySelector('#independent')
+
+
+function filter() {
+
+    let filteredArray = [];
+
+    for (let i = 0; i < members.length; i++) {
+        // if (members[i].state == repeatState.value || repeatState.value == "all") {
+        if (democrats.checked == true && members[i].party == "D") {
+            filteredArray.push(members[i]);
+        }
+        if (republican.checked == true && members[i].party == "R") {
+            filteredArray.push(members[i]);
+        }
+        if (independents.checked == true && members[i].party == "I") {
+            filteredArray.push(members[i])
+        }
     }
-};
+    return filteredArray;
+}
 
-console.log(members)
-console.log(republicanarray)
-console.log(democratarray)
-console.log(independentarray)
+filter();
+
+democrats.addEventListener("click", function () {
+    let filteredArray = filter();
+    table(filter(filteredArray))
+});
+
+republican.addEventListener("click", function () {
+    let filteredArray = filter();
+    table(filteredArray)
+});
+
+independents.addEventListener("click", function () {
+    let filteredArray = filter();
+    table(filteredArray)
+});
+
+
+let tableBody5 = document.getElementById("tabledata");
+
+function table(members) {
+    tableBody5.innerHTML = ""
+    for (let member in members) {
+        if (members[member].middle_name == null) {
+            members[member].middle_name = ""
+        }
+        //Loop through members array to get each member data and populate the table
+        tableBody5.innerHTML += "<tr><td>" + "<a href='" + members[member].url + "'>" + members[member].first_name + ' ' + members[member].middle_name + " " + members[member].last_name + " </a>" + "</td><td>" +
+            members[member].party + "</td><td>" +
+            members[member].state + "</td><td>" +
+            members[member].seniority + "</td><td>" +
+            members[member].votes_with_party_pct + " %" + "</td></tr>";
+
+    }
+}
+
+table(members);
 
 
 
-var results = document.getElementById("tabledata");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function table() {
-//     for (var member in members) {
-//         if (members[member].middle_name == null) {
-//             members[member].middle_name = ""
+//     let republican = document.querySelector('#republican')
+//     republican.addEventListener("click", function () {
+//         if (republican.checked) {
+//             for (let member in republicanarray) {
+//                 if (republicanarray[member].middle_name == null) {
+//                     republicanarray[member].middle_name = ""
+//                 }
+//                 //Loop through republicanarray array to get each member data and populate the table
+//                 results.innerHTML += "<tr><td>" + "<a href='" + republicanarray[member].url + "'>" + republicanarray[member].first_name + ' ' + republicanarray[member].middle_name + " " + republicanarray[member].last_name + " </a>" + "</td><td>" +
+//                     republicanarray[member].party + "</td><td>" +
+//                     republicanarray[member].state + "</td><td>" +
+//                     republicanarray[member].seniority + "</td><td>" +
+//                     republicanarray[member].votes_with_party_pct + " %" + "</td></tr>";
+
+//             }
 //         }
-//         //Loop through members array to get each member data and populate the table
-//         results.innerHTML += "<tr><td>" + "<a href='" + members[member].url + "'>" + members[member].first_name + ' ' + members[member].middle_name + " " + members[member].last_name + " </a>" + "</td><td>" +
-//             members[member].party + "</td><td>" +
-//             members[member].state + "</td><td>" +
-//             members[member].seniority + "</td><td>" +
-//             members[member].votes_with_party_pct + " %" + "</td></tr>";
+//     })
 
-//     }
-// }
+//     let democrats = document.querySelector('#democrat')
+//     democrats.addEventListener("click", function () {
+//         if (democrats.checked) {
+//             for (let member in democratarray) {
+//                 if (democratarray[member].middle_name == null) {
+//                     democratarray[member].middle_name = ""
+//                 }
+//                 //Loop through democratarray array to get each member data and populate the table
+//                 results.innerHTML += "<tr><td>" + "<a href='" + democratarray[member].url + "'>" + democratarray[member].first_name + ' ' + democratarray[member].middle_name + " " + democratarray[member].last_name + " </a>" + "</td><td>" +
+//                     democratarray[member].party + "</td><td>" +
+//                     democratarray[member].state + "</td><td>" +
+//                     democratarray[member].seniority + "</td><td>" +
+//                     democratarray[member].votes_with_party_pct + " %" + "</td></tr>";
 
-window.onload = table();
+//             }
+//         }
+//     })
+
+//     let independents = document.querySelector('#independent')
+//     independents.addEventListener("click", function () {
+//         if (independents.checked) {
+//             for (let member in independentarray) {
+//                 if (independentarray[member].middle_name == null) {
+//                     independentarray[member].middle_name = ""
+//                 }
+//                 //Loop through independentarray array to get each member data and populate the table
+//                 results.innerHTML += "<tr><td>" + "<a href='" + independentarray[member].url + "'>" + independentarray[member].first_name + ' ' + independentarray[member].middle_name + " " + independentarray[member].last_name + " </a>" + "</td><td>" +
+//                     independentarray[member].party + "</td><td>" +
+//                     independentarray[member].state + "</td><td>" +
+//                     independentarray[member].seniority + "</td><td>" +
+//                     independentarray[member].votes_with_party_pct + " %" + "</td></tr>";
+
+//             }
+//         }
+//     })
 
 
-function table() {
-    let republican = document.querySelector('#republican')
-    republican.addEventListener("click", function () {
-        if (republican.checked) {
-            for (var member in republicanarray) {
-                if (republicanarray[member].middle_name == null) {
-                    republicanarray[member].middle_name = ""
-                }
-                //Loop through republicanarray array to get each member data and populate the table
-                results.innerHTML += "<tr><td>" + "<a href='" + republicanarray[member].url + "'>" + republicanarray[member].first_name + ' ' + republicanarray[member].middle_name + " " + republicanarray[member].last_name + " </a>" + "</td><td>" +
-                    republicanarray[member].party + "</td><td>" +
-                    republicanarray[member].state + "</td><td>" +
-                    republicanarray[member].seniority + "</td><td>" +
-                    republicanarray[member].votes_with_party_pct + " %" + "</td></tr>";
-
-            }
-        }
-    })
-}
 
 
-function table(filteredArray) {
-    let republican = document.querySelector('#republican')
-    republican.addEventListener("click", function () {
-        if (republican.checked) {
-            for (let member in filteredArray) {
-                if (filteredArray[member].middle_name == null) {
-                    filteredArray[member].middle_name = ""
-                }
-                //Loop through filteredArray array to get each member data and populate the table
-                results.innerHTML += "<tr><td>" + "<a href='" + filteredArray[member].url + "'>" + filteredArray[member].first_name + ' ' + filteredArray[member].middle_name + " " + filteredArray[member].last_name + " </a>" + "</td><td>" +
-                    filteredArray[member].party + "</td><td>" +
-                    filteredArray[member].state + "</td><td>" +
-                    filteredArray[member].seniority + "</td><td>" +
-                    filteredArray[member].votes_with_party_pct + " %" + "</td></tr>";
 
-            }
-        }
-    })
-}
+
+
+
+
+
+
+
+
+// function table() {
+//     let republican = document.querySelector('#republican')
+//     republican.addEventListener("change", function () {
+//         if (republican.checked) {
+//             console.log("holla")
+
+//             for (let member in republicanarray) {
+//                 if (republicanarray[member].middle_name == null) {
+//                     republicanarray[member].middle_name = ""
+//                 }
+//                 //Loop through republicanarray array to get each member data and populate the table
+//                 results.innerHTML += "<tr><td>" + "<a href='" + republicanarray[member].url + "'>" + republicanarray[member].first_name + ' ' + republicanarray[member].middle_name + " " + republicanarray[member].last_name + " </a>" + "</td><td>" +
+//                     republicanarray[member].party + "</td><td>" +
+//                     republicanarray[member].state + "</td><td>" +
+//                     republicanarray[member].seniority + "</td><td>" +
+//                     republicanarray[member].votes_with_party_pct + " %" + "</td></tr>";
+
+
+
+// Write the javascript code that will filter the data by party:
+
+// Get checked box values and put them into an array.
+// Use that array to filter the list of members to pass to your
+// function to create the table.
+// Call this code whenever a checkbox is changed, i.e., use an onchanged event listener.
+
+
+
+
+
 
 //Add checkbox filters 
 
@@ -96,17 +209,11 @@ function table(filteredArray) {
 
 
 
-
-// //To filter the array
-
-
-
-
 // }
 
 // window.onload = table();
 
-//Filtering works for the republican can we create a global variable called a new array and push stuff inside each time? 
+//Filtering works for the republican can we create a global letiable called a new array and push stuff inside each time? 
 
 
 // document.write('table');
@@ -143,9 +250,9 @@ function table(filteredArray) {
 
 //The button to show more or less text
 function showMoreOrLess() {
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btnText = document.getElementById("myBtn");
+    let dots = document.getElementById("dots");
+    let moreText = document.getElementById("more");
+    let btnText = document.getElementById("myBtn");
 
     if (dots.style.display === "none") {
         dots.style.display = "inline";

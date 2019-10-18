@@ -12,26 +12,34 @@ console.log(members)
 let republican = document.querySelector('#republican');
 let democrats = document.querySelector('#democrat')
 let independents = document.querySelector('#independent')
+let states = document.querySelector('#select-filter')
+
+// let state = document.querySelector('#state-filter')
 
 
 function filter() {
-
     let filteredArray = [];
 
     for (let i = 0; i < members.length; i++) {
-        // if (members[i].state == repeatState.value || repeatState.value == "all") {
-        if (democrats.checked == true && members[i].party == "D") {
-            filteredArray.push(members[i]);
+
+        if (states.value == members[i].state || states.value == "all") {
+            if (democrats.checked == true && members[i].party == "D") {
+                filteredArray.push(members[i]);
+            }
+            if (republican.checked == true && members[i].party == "R") {
+                filteredArray.push(members[i]);
+            }
+            if (independents.checked == true && members[i].party == "I") {
+                filteredArray.push(members[i])
+            }
         }
-        if (republican.checked == true && members[i].party == "R") {
-            filteredArray.push(members[i]);
-        }
-        if (independents.checked == true && members[i].party == "I") {
-            filteredArray.push(members[i])
-        }
+
+
     }
     return filteredArray;
 }
+
+
 
 filter();
 
@@ -46,6 +54,11 @@ republican.addEventListener("click", function () {
 });
 
 independents.addEventListener("click", function () {
+    let filteredArray = filter();
+    table(filteredArray)
+});
+
+states.addEventListener("change", function () {
     let filteredArray = filter();
     table(filteredArray)
 });
@@ -70,6 +83,36 @@ function table(members) {
 }
 
 table(members);
+
+
+function filterState() {
+
+    var unique = members.map(item => item.state).filter(function (item, i, ar) {
+        return ar.indexOf(item) === i;
+    }).sort();
+    console.log(unique)
+}
+
+
+let statesList = document.getElementById("select-filter")
+let arrayofStates = []
+
+for (let i = 0; i < members.length; i++) {
+    arrayofStates.push(members[i].state)
+}
+
+let unique = arrayofStates.filter(function (item, i, ar) {
+    return ar.indexOf(item) === i;
+})
+console.log(unique.sort())
+
+for (var i = 0; i < unique.length; i++) {
+    let states = document.createElement("option");
+    states.value = unique[i];
+    states.innerHTML = unique[i];
+    statesList.appendChild(states)
+}
+
 
 
 

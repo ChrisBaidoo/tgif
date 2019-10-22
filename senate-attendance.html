@@ -12,16 +12,14 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<!-- for the navs: nav pills and nav tabs, flex   -->
-
 <body class="container" id="top">
 
     <div class="row ">
         <div class="col-md-3 col-sm-6 mb-30px">
-            <img src="./image/tgif-logo.png" alt="man with magnifying glass">
+            <img src="./image/capitol-icon.jpg" alt="man with magnifying glass">
         </div>
         <div class="col-md-9 col-sm-6 align-self-center pull-left">
-            <h1>Transparent Government in Fact</h1>
+            <h1 class="main-header">Transparent Government in Fact</h1>
         </div>
     </div>
     <div class="row justify-content-end">
@@ -30,28 +28,28 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light nav-tabs">
+    <nav class="navbar navbar-expand-sm navbar-light  nav-tabs">
 
         <a href="./index.html" class="navbar nav-item nav-link">Home</a>
 
         <div class="dropdown">
 
-            <a class="nav-item nav-link active dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+            <a class="nav-item nav-link  dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
                 aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
 
             <div class="dropdown-menu">
-                <a class="navbar nav-item nav-link  active" href="./senate-data.html">Senate</a>
+                <a class="navbar nav-item nav-link " href="./senate-data.html">Senate</a>
                 <a class="nav-link nav-item" href="./house-data.html">House</a>
             </div>
         </div>
 
         <div class="dropdown">
 
-            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+            <a class="nav-item nav-link active dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
                 aria-haspopup="true" aria-expanded="false" href="#">Attendance</a>
 
             <div class="dropdown-menu">
-                <a class="nav-link nav-item" href="./senate-attendance.html">Senate</a>
+                <a class="nav-link nav-item active" href="./senate-attendance.html">Senate</a>
                 <a class="nav-link nav-item" href="./house-attendance.html">House</a>
             </div>
         </div>
@@ -67,9 +65,6 @@
             </div>
         </div>
     </nav>
-
-    <br>
-    <br>
 
 
     <section class="card">
@@ -100,10 +95,10 @@
 
                     <table class="table table-bordered table-striped">
                         <thead>
-                            <tr>
-                                <th class="column width_1">Party</th>
-                                <th class="column width_1">Number of Reps</th>
-                                <th class="column width_1">% Voted with Party</th>
+                            <tr class="navy-blue">
+                                <th class="column width_1 font-white">Party</th>
+                                <th class="column width_1 font-white">Number of Reps</th>
+                                <th class="column width_1 font-white">% Voted with Party</th>
                             </tr>
                         </thead>
                         <tbody id="senate-attendance">
@@ -122,10 +117,10 @@
 
                     <table class="table table-bordered table-striped">
                         <thead>
-                            <tr>
-                                <th class="column width_1">Party</th>
-                                <th class="column width_1">Number of Missed Votes</th>
-                                <th class="column width_1">% Missed</th>
+                            <tr class="navy-blue">
+                                <th class="column width_1 font-white">Party</th>
+                                <th class="column width_1 font-white">Number of Missed Votes</th>
+                                <th class="column width_1 font-white">% Missed</th>
                             </tr>
                         </thead>
                         <tbody id="least-engaged">
@@ -142,10 +137,10 @@
 
                     <table class="table table-bordered table-striped">
                         <thead>
-                            <tr>
-                                <th class="column width_1">Party</th>
-                                <th class="column width_1">Number of Missed Votes</th>
-                                <th class="column width_1">% Missed</th>
+                            <tr class="navy-blue">
+                                <th class="column width_1 font-white">Party</th>
+                                <th class="column width_1 font-white">Number of Missed Votes</th>
+                                <th class="column width_1 font-white">% Missed</th>
                             </tr>
                         </thead>
                         <tbody tbody id="most-engaged">
@@ -183,8 +178,6 @@
     <script src="./js/pro-congress-113-senate.js"></script>
     <script src="./js/main.js"></script>
     <script src="/Users/christianbaidoo/Desktop/TGIF/js/statistics.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

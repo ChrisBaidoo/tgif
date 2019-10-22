@@ -33,8 +33,6 @@ function filter() {
                 filteredArray.push(members[i])
             }
         }
-
-
     }
     return filteredArray;
 }
@@ -81,6 +79,7 @@ function table(members) {
 
     }
 }
+
 
 table(members);
 

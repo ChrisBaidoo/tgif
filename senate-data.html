@@ -5,23 +5,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Senate</title>
+    <title>Senate Data</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<!-- for the navs: nav pills and nav tabs, flex   -->
 
 <body class="container" id="top">
 
     <div class="row ">
         <div class="col-md-3 col-sm-6 mb-30px">
-            <img src="./image/tgif-logo.png" alt="man with magnifying glass">
+            <img src="./image/capitol-icon.jpg" alt="man with magnifying glass">
         </div>
         <div class="col-md-9 col-sm-6 align-self-center pull-left">
-            <h1>Transparent Government in Fact</h1>
+            <h1 class="main-header">Transparent Government in Fact</h1>
         </div>
     </div>
     <div class="row justify-content-end">
@@ -30,7 +29,7 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light nav-tabs">
+    <nav class="navbar navbar-expand-sm navbar-light  nav-tabs">
 
         <a href="./index.html" class="navbar nav-item nav-link">Home</a>
 
@@ -68,26 +67,24 @@
         </div>
     </nav>
 
-    <br>
-    <br>
+    <div class="jumbotron">
+        <h2>Senators</h2>
+        <p>
+            First convened in 1789, the composition and powers of the Senate are
+            established in Article One of the U.S. Constitution. Each state is
+            represented by two senators, regardless of population, who serve staggered
+            six-year terms. The Senate has several exclusive powers not granted to the
+            House, including consenting to treaties as a precondition to their
+            ratification and consenting to or confirming appointments of Cabinet
+            secretaries, federal judges, other federal executive officials, military
+            officers, regulatory officials, ambassadors, and other federal uniformed
+            officers, as well as trial of federal officials impeached by the House.
+        </p>
+    </div>
 
-
-    <section class="card">
+    <!-- <section class="card">
         <div class="card-body">
-            <h2 classs="card-title">Senators</h2>
-            <p class="card-text">
-                First convened in 1789, the composition and powers of the Senate are
-                established in Article One of the U.S. Constitution. Each state is
-                represented by two senators, regardless of population, who serve staggered
-                six-year terms. The Senate has several exclusive powers not granted to the
-                House, including consenting to treaties as a precondition to their
-                ratification and consenting to or confirming appointments of Cabinet
-                secretaries, federal judges, other federal executive officials, military
-                officers, regulatory officials, ambassadors, and other federal uniformed
-                officers, as well as trial of federal officials impeached by the House.
-            </p>
-        </div>
-    </section>
+    </section> -->
 
 
     <!-- https://www.linkedin.com/learning/bootstrap-4-essential-training/table-styles-3 -->
@@ -109,11 +106,10 @@
 
     <table class="table table-bordered table-striped">
 
-        <tr>
-            <th id="test">Senator</th>
-            <th>Party
-
-            <th>
+        <tr class="navy-blue">
+            <th class="font-white">Senator</th>
+            <th class="font-white">Party
+            <th class="font-white">
                 State
                 <div>
                     <select name="Filter by state" id="select-filter">
@@ -124,21 +120,22 @@
                     </select>
                 </div>
             </th>
-            <th>Years in Office</th>
-            <th>Percentage of Votes</th>
+            <th class="font-white">Years in Office</th>
+            <th class="font-white">Percentage of Votes</th>
         </tr>
-        </thead>
         <tbody id="tabledata">
 
         </tbody>
     </table>
 
+    <button type="button" class="btn btn-info" data-target="#history"><a href="#top">Back to the top</a></button>
 
 
 
-    <div class="top">
+
+    <!-- <div class="top">
         <a href="#top">Back to the top</a>
-    </div>
+    </div> -->
 
 
     <footer class="page-footer font-small blue">
@@ -156,9 +153,6 @@
     <script src="./js/pro-congress-113-senate.js"></script>
     <script src="./js/main.js"></script>
 
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

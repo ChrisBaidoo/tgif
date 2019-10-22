@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Senate</title>
+    <title>House Data</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -17,10 +17,10 @@
 
     <div class="row ">
         <div class="col-md-3 col-sm-6 mb-30px">
-            <img src="./image/tgif-logo.png" alt="man with magnifying glass">
+            <img src="./image/capitol-icon.jpg" alt="man with magnifying glass">
         </div>
-        <div class="col-md-9 col-sm-6 align-self-center pull-left">
-            <h1>Transparent Government in Fact</h1>
+        <div class="col-md-9 col-sm-6 align-self-center background-image">
+            <h1 class="main-header">Transparent Government in Fact</h1>
         </div>
     </div>
     <div class="row justify-content-end">
@@ -40,7 +40,7 @@
 
             <div class="dropdown-menu">
                 <a class="navbar nav-item nav-link " href="./senate-data.html">Senate</a>
-                <a class="navbar nav-item nav-link " href="./house-data.html">House</a>
+                <a class="navbar nav-item nav-link active" href="./house-data.html">House</a>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
 
             <div class="dropdown-menu">
                 <a class="nav-link nav-item" href="./senate-attendance.html">Senate</a>
-                <a class="nav-link nav-item" href="./house-attendance.html">House</a>
+                <a class="nav-link nav-item " href="./house-attendance.html">House</a>
             </div>
         </div>
 
@@ -67,26 +67,29 @@
         </div>
     </nav>
 
+    <div class="jumbotron">
+        <h2>Congressmen</h2>
+        <p class="card-text">
+            The major power of the House is to pass federal legislation that affects the entire country, although
+            its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming
+            law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each
+            chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials
+            (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case
+            there is no majority in the Electoral College.
+        </p>
+        <p>
+            Each U.S. state is represented in the House in proportion to its population as measured in the census,
+            but every state is entitled to at least one representative.
+        </p>
 
-    <section class="card">
+    </div>
+
+    <!-- <section class="card">
         <div class="card-body">
             <h2 classs="card-title">Congressmen</h2>
-            <p class="card-text">
-                The major power of the House is to pass federal legislation that affects the entire country, although
-                its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming
-                law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each
-                chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials
-                (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case
-                there is no majority in the Electoral College.
 
-                <br>
-                <br>
-
-                Each U.S. state is represented in the House in proportion to its population as measured in the census,
-                but every state is entitled to at least one representative.
-            </p>
         </div>
-    </section>
+    </section> -->
 
     <form class="checkbox">
         <input type="checkbox" id="republican" class="checkbox">
@@ -106,10 +109,10 @@
 
     <table class="table table-bordered table-striped">
 
-        <tr>
-            <th>House</th>
-            <th>Party
-            <th>
+        <tr class="navy-blue">
+            <th class="font-white">House</th>
+            <th class="font-white ">Party
+            <th class="font-white">
                 State
                 <div>
                     <select name="Filter by state" id="select-filter">
@@ -120,8 +123,8 @@
                     </select>
                 </div>
             </th>
-            <th>Years in Office</th>
-            <th>Percentage of Votes</th>
+            <th class="font-white">Years in Office</th>
+            <th class="font-white">Percentage of Votes</th>
         </tr>
         </thead>
 

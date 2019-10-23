@@ -64,3 +64,44 @@ img {
 .navy-blue {
     background: url(/Users/christianbaidoo/Desktop/TGIF/image/Prde-and-Freedom.png);
 }
+
+#loader {
+    border: 16px solid #f2f2f2;
+    position: relative;
+    margin-top: 50px;
+    left: 40%;
+    top: 100%;
+    z-index: 1;
+    border-radius: 50%;
+    border-top: 16px solid #114484;
+    width: 150px;
+    height: 150px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.social {
+    text-align: center;
+}

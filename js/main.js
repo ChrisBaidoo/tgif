@@ -1,7 +1,7 @@
-let arrayOfMembersOfTheSenate = data.results
+let arrayOfMembers = data.results
 
 
-let members = arrayOfMembersOfTheSenate[0].members
+let members = arrayOfMembers[0].members
 
 
 

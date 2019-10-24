@@ -13,17 +13,21 @@ let statistics = {
 
 
 //Sort the Democrats, Independents and Republicans
-for (let member in members) {
-    //Loop through the object to get each objects data
-    if (members[member].party === "D") {
-        statistics.numberOfDemocrats.push(members[member])
-    } else if (members[member].party === "I") {
-        statistics.numberOfIndependents.push(members[member])
+function statisticsObjec(members) {
+    for (let member in members) {
+        //Loop through the object to get each objects data
+        if (members[member].party === "D") {
+            statistics.numberOfDemocrats.push(members[member])
+        } else if (members[member].party === "I") {
+            statistics.numberOfIndependents.push(members[member])
 
-    } else if (members[member].party === "R") {
-        statistics.numberOfRepublicans.push(members[member])
-    }
-};
+        } else if (members[member].party === "R") {
+            statistics.numberOfRepublicans.push(members[member])
+        }
+    };
+}
+
+
 
 
 // Find average % Voted with Party For Demo
@@ -69,7 +73,8 @@ averagePercentageForTotalPartyMembers = percentageForTotalPartyMembers.reduce((a
 let tableBody6 = document.getElementById("senate-attendance");
 
 
-function table() {
+function AtGlancetable() {
+
     tableBody6.innerHTML += "<tr><td>" +
         "Republican" + "</td><td>" + statistics.numberOfRepublicans.length + "</td><td>" + averagePercentageForRepublicans.toFixed(2) + " %" + "</td></tr>" +
         "<tr><td>" +
@@ -80,8 +85,7 @@ function table() {
         "Total" + "</td><td>" + percentageForTotalPartyMembers.length + "</td><td>" + averagePercentageForTotalPartyMembers.toFixed(2) + " %" + "</td></tr>"
 }
 
-
-table();
+AtGlancetable();
 
 ////////////////////////////////////////////////////////////////
 

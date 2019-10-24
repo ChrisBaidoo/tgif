@@ -14,7 +14,7 @@ let democrats = document.querySelector('#democrat')
 let independents = document.querySelector('#independent')
 let states = document.querySelector('#select-filter')
 
-// let state = document.querySelector('#state-filter')
+let state = document.querySelector('#state-filter')
 
 
 function filter() {
@@ -86,6 +86,25 @@ table(members);
 
 function filterState() {
 
+    let statesList = document.getElementById("select-filter")
+    let arrayofStates = []
+
+    for (let i = 0; i < members.length; i++) {
+        arrayofStates.push(members[i].state)
+    }
+
+    let unique = arrayofStates.filter(function (item, i, ar) {
+        return ar.indexOf(item) === i;
+    })
+    console.log(unique.sort())
+
+    for (var i = 0; i < unique.length; i++) {
+        let states = document.createElement("option");
+        states.value = unique[i];
+        states.innerHTML = unique[i];
+        statesList.appendChild(states)
+    }
+
     var unique = members.map(item => item.state).filter(function (item, i, ar) {
         return ar.indexOf(item) === i;
     }).sort();
@@ -93,24 +112,7 @@ function filterState() {
 }
 
 
-let statesList = document.getElementById("select-filter")
-let arrayofStates = []
 
-for (let i = 0; i < members.length; i++) {
-    arrayofStates.push(members[i].state)
-}
-
-let unique = arrayofStates.filter(function (item, i, ar) {
-    return ar.indexOf(item) === i;
-})
-console.log(unique.sort())
-
-for (var i = 0; i < unique.length; i++) {
-    let states = document.createElement("option");
-    states.value = unique[i];
-    states.innerHTML = unique[i];
-    statesList.appendChild(states)
-}
 
 
 

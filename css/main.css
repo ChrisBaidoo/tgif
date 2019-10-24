@@ -29,14 +29,8 @@ img {
 
 }
 
-.back-image {
-    /* background: url(/Users/christianbaidoo/Desktop/TGIF/image/merican.png);
-    background-size: cover;
-    border-radius: 6px;
-    padding: 20px;
-    padding-right: -30px;
-    margin-right: 0px; */
-
+label {
+    margin-right: 10px;
 }
 
 .jumbotron {
@@ -52,13 +46,8 @@ img {
     color: white;
 }
 
-.background-image {
-    /* background: url(/Users/christianbaidoo/Desktop/TGIF/image/merican.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 200px; */
-    /* border: 1px solid red;
-    border-radius: 6px; */
+.btn {
+    margin-bottom: 10px;
 }
 
 .navy-blue {
@@ -66,14 +55,14 @@ img {
 }
 
 #loader {
-    border: 16px solid #f2f2f2;
+    border: 5px solid #f2f2f2;
     position: relative;
     margin-top: 50px;
     left: 40%;
     top: 100%;
     z-index: 1;
     border-radius: 50%;
-    border-top: 16px solid #114484;
+    border-top: 5px solid #114484;
     width: 150px;
     height: 150px;
     -webkit-animation: spin 2s linear infinite;
@@ -104,4 +93,14 @@ img {
 
 .social {
     text-align: center;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    margin-top: 0,
 }

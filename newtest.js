@@ -1,6 +1,6 @@
 let senateUrl = "https://api.propublica.org/congress/v1/113/senate/members.json";
 let houseUrl = "https://api.propublica.org/congress/v1/113/house/members.json";
-let tableBody5 = document.getElementById("tabledata");
+// let tableBody5 = document.getElementById("tabledata");
 
 
 let members = []
@@ -49,6 +49,10 @@ function buildSenatorPage(members) {
         console.log(members)
         document.getElementById("tabledata").innerHTML =
             buildChamberTable(members)
+        listOfStates()
+        // document.getElementById("tabledata").innerHTML =
+        //     populateFilterTable(members)
+        // filter(members)
     } else if (window.location.href.includes("senate-attendance")) {
         console.log(members)
         console.log("hello")
@@ -81,6 +85,7 @@ function buildHousePage(members) {
         console.log(members)
         document.getElementById("tabledata").innerHTML =
             buildChamberTable(members)
+        listOfStates()
     } else if (window.location.href.includes("house-attendance")) {
         console.log(members)
         console.log("hello")
@@ -325,43 +330,6 @@ function buildMostLoyalTable(member) {
     return table;
 }
 
-// function buildLeastLoyalTable(member) {
-//     let table = ""
-//     let bottomTenPercentVotesWithParty = [];
-
-//     sortMembers = members
-
-//     sorted = sortMembers.sort(function (a, b) {
-//         return a.votes_with_party_pct - b.votes_with_party_pct;
-//     })
-
-//     console.log(sorted)
-
-//     for (member in sorted) {
-//         if (member < ((sorted.length) * 0.1)) {
-//             bottomTenPercentVotesWithParty.push(sorted[member])
-//             console.log(bottomTenPercentVotesWithParty)
-
-//         } else if (sorted[member] == sorted[member - 1]) {
-//             bottomTenPercentVotesWithParty.push(sorted[member]);
-//         }
-
-
-//         console.log(bottomTenPercentVotesWithParty)
-
-//         for (let member in bottomTenPercentVotesWithParty) {
-//             if (bottomTenPercentVotesWithParty[member].middle_name == null) {
-//                 bottomTenPercentVotesWithParty[member].middle_name = ""
-//             }
-//             //Loop through members array to get each member data and populate the table
-//             table += "<tr><td>" + "<a href='" + bottomTenPercentVotesWithParty[member].url + "'>" + bottomTenPercentVotesWithParty[member].first_name + ' ' + bottomTenPercentVotesWithParty[member].middle_name + " " + bottomTenPercentVotesWithParty[member].last_name + " </a>" + "</td><td>" +
-//                 bottomTenPercentVotesWithParty[member].total_votes + "</td><td>" +
-//                 bottomTenPercentVotesWithParty[member].votes_with_party_pct + " %" + "</td>"
-//         }
-//         return table
-
-//     }
-// }
 
 
 function buildLeastLoyalTable(member) {
@@ -392,4 +360,123 @@ function buildLeastLoyalTable(member) {
             topTenPercentVotesWithParty[member].votes_with_party_pct + " %" + "</td>"
     }
     return table;
+}
+
+function listOfStates() {
+
+    let statesList = document.getElementById("select-filter")
+    let arrayofStates = []
+
+    for (let i = 0; i < members.length; i++) {
+        arrayofStates.push(members[i].state)
+    }
+
+    let unique = arrayofStates.filter(function (item, i, ar) {
+        return ar.indexOf(item) === i;
+    })
+    console.log(unique.sort())
+
+    for (var i = 0; i < unique.length; i++) {
+        let states = document.createElement("option");
+        states.value = unique[i];
+        states.innerHTML = unique[i];
+        statesList.appendChild(states)
+    }
+}
+
+
+let republican = document.querySelector('#republican');
+let democrats = document.querySelector('#democrat')
+let independents = document.querySelector('#independent')
+let states = document.querySelector('#select-filter')
+
+
+function filter() {
+    let filteredArray = [];
+
+    for (let i = 0; i < members.length; i++) {
+
+        if (states.value == members[i].state || states.value == "all") {
+            if (democrats.checked == true && members[i].party == "D") {
+                filteredArray.push(members[i]);
+            }
+            if (republican.checked == true && members[i].party == "R") {
+                filteredArray.push(members[i]);
+            }
+            if (independents.checked == true && members[i].party == "I") {
+                filteredArray.push(members[i])
+            } else if (independents.checked == false && republican.checked == false && democrats.checked == false) {
+                filteredArray = members
+            }
+        }
+    }
+    return filteredArray;
+}
+
+
+
+
+
+democrats.addEventListener("click", function () {
+    let filteredArray = filter();
+    // console.log(filteredArray)
+    document.getElementById("tabledata").innerHTML = table(filteredArray)
+});
+
+
+republican.addEventListener("click", function () {
+    let filteredArray = filter();
+    // console.log(filteredArray)
+    document.getElementById("tabledata").innerHTML = table(filteredArray)
+});
+
+
+independents.addEventListener("click", function () {
+    let filteredArray = filter();
+    // console.log(filteredArray)
+    document.getElementById("tabledata").innerHTML = table(filteredArray)
+});
+
+
+states.addEventListener("change", function () {
+    let filteredArray = filter();
+    console.log(filteredArray)
+    document.getElementById("tabledata").innerHTML = table(filteredArray)
+});
+
+
+
+function table(members) {
+    let tableBody = ""
+
+    for (let member in members) {
+        if (members[member].middle_name == null) {
+            members[member].middle_name = ""
+        }
+        //Loop through members array to get each member data and populate the table
+        tableBody += "<tr><td>" + "<a href='" + members[member].url + "'>" + members[member].first_name + ' ' + members[member].middle_name + " " + members[member].last_name + " </a>" + "</td><td>" +
+            members[member].party + "</td><td>" +
+            members[member].state + "</td><td>" +
+            members[member].seniority + "</td><td>" +
+            members[member].votes_with_party_pct + " %" + "</td></tr>";
+    }
+    return tableBody
+}
+
+
+
+function showMoreOrLess() {
+    let dots = document.getElementById("dots");
+    let moreText = document.getElementById("more");
+    let btnText = document.getElementById("myBtn");
+
+    if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+    } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+    }
 }

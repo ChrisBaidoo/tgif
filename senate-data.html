@@ -5,166 +5,137 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Senate</title>
+    <title>Senate Data</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<!-- for the navs: nav pills and nav tabs, flex   -->
 
 <body class="container" id="top">
 
-    <div class="container floating">
-
-        <img src="./image/tgif-logo.png" alt="man with magnifying glass">
-
-        <h2>Transparent Government in Fact</h2>
-
-        <a href="mailto:info@tgif.net" target="_top"><i class="fa fa-envelope"></i> info@tgif.net</a>
+    <div class="row ">
+        <div class="col-md-3 col-sm-6 mb-30px">
+            <img src="./image/capitol-icon.jpg" alt="man with magnifying glass">
+        </div>
+        <div class="col-md-9 col-sm-6 align-self-center pull-left">
+            <h1 class="main-header">Transparent Government in Fact</h1>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2 col-sm-2">
+            <a class="email" href="mailto:info@tgif.net" target="_top"><i class="fa fa-envelope"></i> info@tgif.net</a>
+        </div>
     </div>
 
-    <nav class="navbar">
-        <a class="nav-link nav-item" href="./index.html">Home</a>
-        <a class="nav-link nav-item" href="./senate-data.html">Senate</a>
-        <a class="nav-link nav-item" href="./house-data.html">House</a>
+    <nav class="navbar navbar-expand-sm navbar-light  nav-tabs">
 
+        <a href="./index.html" class="navbar nav-item nav-link">Home</a>
 
+        <div class="dropdown">
+
+            <a class="nav-item nav-link active dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
+
+            <div class="dropdown-menu">
+                <a class="navbar nav-item nav-link  active" href="./senate-data.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-data.html">House</a>
+            </div>
+        </div>
 
         <div class="dropdown">
 
             <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
-                aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
+                aria-haspopup="true" aria-expanded="false" href="#">Attendance</a>
 
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Senate</a>
-                <a class="dropdown-item" href="#">House</a>
+                <a class="nav-link nav-item" href="./senate-attendance.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-attendance.html">House</a>
             </div>
         </div>
 
+        <div class="dropdown">
 
+            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Party Loyalty</a>
 
-
-
+            <div class="dropdown-menu">
+                <a class="nav-link nav-item" href="./senate-party-loyalty.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-party-loyalty.html">House</a>
+            </div>
+        </div>
     </nav>
 
+    <div class="jumbotron">
+        <h2>Senators</h2>
+        <p>
+            First convened in 1789, the composition and powers of the Senate are
+            established in Article One of the U.S. Constitution. Each state is
+            represented by two senators, regardless of population, who serve staggered
+            six-year terms. The Senate has several exclusive powers not granted to the
+            House, including consenting to treaties as a precondition to their
+            ratification and consenting to or confirming appointments of Cabinet
+            secretaries, federal judges, other federal executive officials, military
+            officers, regulatory officials, ambassadors, and other federal uniformed
+            officers, as well as trial of federal officials impeached by the House.
+        </p>
+    </div>
 
-    <section class="card">
-        <div class="card-body">
-            <h2 classs="card-title">Senators</h2>
-            <p class="card-text">
-                First convened in 1789, the composition and powers of the Senate are
-                established in Article One of the U.S. Constitution. Each state is
-                represented by two senators, regardless of population, who serve staggered
-                six-year terms. The Senate has several exclusive powers not granted to the
-                House, including consenting to treaties as a precondition to their
-                ratification and consenting to or confirming appointments of Cabinet
-                secretaries, federal judges, other federal executive officials, military
-                officers, regulatory officials, ambassadors, and other federal uniformed
-                officers, as well as trial of federal officials impeached by the House.
-            </p>
-        </div>
-    </section>
 
 
     <!-- https://www.linkedin.com/learning/bootstrap-4-essential-training/table-styles-3 -->
     <!-- table-striped table hover -->
 
-    <thead class="thead-light">
+    <form class="checkbox">
+        <span class="font-italic">Filter by:</span> &ensp;
 
-    </thead>
-    <table class="table " id="tabledata">
-        <tr>
-            <th id="test">Senator</th>
-            <th>Party
-                <form action="" method="">
-                    <div>
-                        <select id="party-filter">
-                            <option value="all">All</option>
-                            <option value="D">D</option>
-                            <option value="R">R</option>
-                            <option value="I">I</option>
-                        </select>
+        <input type="checkbox" id="republican" class="checkbox">
+        <label for="republican">Republican</label>
+        <input type="checkbox" id="democrat">
+        <label for="democrat">Democrat</label>
+        <input type="checkbox" id="independent">
+        <label for="independent">Independent</label>
+    </form>
 
-                    </div>
-                </form>
-            <th>
+
+
+    <table class="table table-bordered table-striped">
+
+        <tr class="navy-blue">
+            <th class="font-white">Senator</th>
+            <th class="font-white">Party
+            <th class="font-white">
                 State
-                <form name="filter" id="FilterForm" action="" method="">
-                    <div id="select-filter">
-                        <select id="state-filter" class="filter">
-                            <option value="all">All</option>
-                            <option value="AK">AK</option>
-                            <option value="AL">AL</option>
-                            <option value="AR">AR</option>
-                            <option value="AZ">AZ</option>
-                            <option value="CA">CA</option>
-                            <option value="CO">CO</option>
-                            <option value="CT">CT</option>
-                            <option value="DE">DE</option>
-                            <option value="FL">FL</option>
-                            <option value="GA">GA</option>
-                            <option value="HI">HI</option>
-                            <option value="IA">IA</option>
-                            <option value="ID">ID</option>
-                            <option value="IL">IL</option>
-                            <option value="IN">IN</option>
-                            <option value="KS">KS</option>
-                            <option value="KY">KY</option>
-                            <option value="LA">LA</option>
-                            <option value="MA">MA</option>
-                            <option value="MD">MD</option>
-                            <option value="ME">ME</option>
-                            <option value="MI">MI</option>
-                            <option value="MN">MN</option>
-                            <option value="MO">MO</option>
-                            <option value="MS">MS</option>
-                            <option value="MT">MT</option>
-                            <option value="NC">NC</option>
-                            <option value="ND">ND</option>
-                            <option value="NE">NE</option>
-                            <option value="NH">NH</option>
-                            <option value="NJ">NJ</option>
-                            <option value="NM">NM</option>
-                            <option value="NV">NV</option>
-                            <option value="NY">NY</option>
-                            <option value="OH">OH</option>
-                            <option value="OK">OK</option>
-                            <option value="OR">OR</option>
-                            <option value="PA">PA</option>
-                            <option value="RI">RI</option>
-                            <option value="SC">SC</option>
-                            <option value="SD">SD</option>
-                            <option value="TN">TN</option>
-                            <option value="TX">TX</option>
-                            <option value="UT">UT</option>
-                            <option value="VA">VA</option>
-                            <option value="VT">VT</option>
-                            <option value="WA">WA</option>
-                            <option value="WI">WI</option>
-                            <option value="WV">WV</option>
-                            <option value="WY">WY</option>
-                        </select>
-                    </div>
-                </form>
+                <div>
+                    <select name="Filter by state" id="select-filter">
+                        <option value="all">All</option>
+                    </select>
+                </div>
             </th>
-            <th>Years in Office</th>
-            <th>Percentage of Votes</th>
+            <th class="font-white">Years in Office</th>
+            <th class="font-white">Percentage of Votes</th>
         </tr>
-        </thead>
+        <tbody id="tabledata">
 
-        <tbody></tbody>
+        </tbody>
     </table>
+    <div id="loader"></div>
+
+    <button type="button" class="btn btn-info" data-target="#top"><a href="#top" class="font-white text-deco"> Back to
+            the top</a>
+    </button>
 
 
 
-    <div class="top">
-        <a href="#top">Back to the top</a>
-    </div>
-
-
-    <footer class="page-footer font-small blue">
+    <footer class="page-footer font-small">
         <div class="footer-copyright text-center py-3"> &copy; 2019 Copyright: All Rights Reserved
+        </div>
+        <div class="social">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-google"></a>
         </div>
     </footer>
 
@@ -175,11 +146,19 @@
 
     <!-- <pre id="senate-data"></pre> -->
 
-    <script src="./js/pro-congress-113-senate.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- <script src="./js/pro-congress-113-senate.js"></script>
+    <script src="./js/main.js"></script> -->
+    <script src="./newtest.js"></script>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="./css/main.css">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"> </script>
 </body>
 
 </html>

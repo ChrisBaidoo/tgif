@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Senate Party Loyalty</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+
+<!-- <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Senate Party Loyalty</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
+</head> -->
+
+
+<body class="container" id="top">
+
+    <div class="row ">
+        <div class="col-md-3 col-sm-6 mb-30px">
+            <img src="./image/capitol-icon.jpg" alt="man with magnifying glass">
+        </div>
+        <div class="col-md-9 col-sm-6 align-self-center pull-left">
+            <h1 class="main-header">Transparent Government in Fact</h1>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2 col-sm-2 pb-4">
+            <a class="email" href="mailto:info@tgif.net" target="_top"><i class="fa fa-envelope"></i> info@tgif.net</a>
+        </div>
+    </div>
+
+    <!-- navy-blue -->
+
+    <nav class="navbar navbar-expand-sm  nav-tabs">
+
+        <a href="./index.html" class="navbar nav-item nav-link">Home</a>
+
+        <div class="dropdown">
+
+            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Congress 113</a>
+
+            <div class="dropdown-menu">
+                <a class="navbar nav-item nav-link" href="./senate-data.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-data.html">House</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+
+            <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Attendance</a>
+
+            <div class="dropdown-menu">
+                <a class="nav-link nav-item" href="./senate-attendance.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-attendance.html">House</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+
+            <a class="nav-item active nav-link dropdown-toggle" data-toggle="dropdown" id="Congress113Dropdown"
+                aria-haspopup="true" aria-expanded="false" href="#">Party Loyalty</a>
+
+            <div class="dropdown-menu">
+                <a class="nav-link nav-item active" href="./senate-party-loyalty.html">Senate</a>
+                <a class="nav-link nav-item" href="./house-party-loyalty.html">House</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="card">
+        <div class="card-body">
+
+            <div class="row ">
+                <div class="col-md-6 col-sm-6 mb-30px">
+                    <h4>Party Loyalty</h4>
+                    <p>
+                        The Constitution specifies that a majority of members constitutes a quorum to do business in
+                        each house. Representatives and senators rarely force the presence of a quorum by demanding
+                        quorum calls; thus, in most cases, debates continue even if a majority is not present.
+                    </p>
+
+                    <p>
+                        The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator
+                        stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for
+                        the most formal matters, as a roll-call of all 435 representatives takes quite some time;
+                        normally, members vote by electronic device. In the case of a tie, the motion in question fails.
+                        In the Senate, the Vice President may (if present) cast the tiebreaking vote.
+                    </p>
+
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="text-aling-right"></div>
+                    <h4>Senate at a glance</h4>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="navy-blue">
+                                <th class="column width_1 font-white">Party</th>
+                                <th class="column width_1 font-white">Number of Reps</th>
+                                <th class="column width_1 font-white">% Voted with Party</th>
+                            </tr>
+                        </thead>
+                        <tbody id="senate-attendance">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+            <div class="row ">
+
+                <div class="col-md-6 col-sm-6 mb-30px">
+                    <h4>Least Loyal (Bottom 10% Party)</h4>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="navy-blue">
+                                <th class="column width_1 font-white">Name</th>
+                                <th class="column width_1 font-white">Nº of Votes with Party</th>
+                                <th class="column width_1 font-white">% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="least-loyal">
+
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+
+                <div class="col-md-6 col-sm-6 mb-30px">
+                    <h4>Most Loyal (Top 10% Party)</h4>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="navy-blue">
+                                <th class="column width_1 font-white">Name</th>
+                                <th class="column width_1 font-white">Nº of Votes with Party</th>
+                                <th class="column width_1 font-white">% Party Votes</th>
+                            </tr>
+                        </thead>
+                        <tbody tbody id="most-loyal">
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div id="loader"></div>
+
+    </section>
+
+    <br>
+
+
+
+    <button type="button" class="btn btn-info" data-target="#top"><a href="#top" class="font-white text-deco"> Back to
+            the top</a>
+    </button>
+
+
+    <footer class="page-footer font-small blue">
+        <div class="footer-copyright text-center py-3"> &copy; 2019 Copyright: All Rights Reserved
+        </div>
+        <div class="social">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-google"></a>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- <script src="./js/pro-congress-113-senate.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/statistics.js"></script>
+    <script src="/Users/christianbaidoo/Desktop/TGIF/js/loyal.js"></script> -->
+    <script src="./newtest.js"></script>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"> </script>
+</body>
+
+</html>

@@ -80,10 +80,9 @@ label {
 
 #loader {
     border: 5px solid #f2f2f2;
-    position: ab;
+    position: absolute;
     margin-top: 50px;
     left: 40%;
-    top: 0;
     z-index: 99;
     border-radius: 50%;
     border-top: 5px solid #114484;
@@ -131,8 +130,6 @@ label {
 .table-wrapper-scroll-y {
     display: block;
     margin-bottom: 20px;
-
-
 }
 
 .fixed {

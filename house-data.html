@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
-<!-- for the navs: nav pills and nav tabs, flex   -->
 
 <body class="container">
 
@@ -97,53 +96,42 @@
     </form>
 
 
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
-    <thead class="thead-light">
+        <table class="table table-bordered table-striped table-hover">
 
-    </thead>
 
-    <table class="table table-bordered table-striped">
+            <tr>
+                <th class="font-white fixed navy-blue">Senator</th>
+                <th class="font-white fixed navy-blue">Party
+                <th class="font-white fixed navy-blue">
+                    State
+                    <div>
+                        <select name="Filter by state" id="select-filter">
+                            <option value="all">All</option>
+                        </select>
+                    </div>
+                </th>
+                <th class="font-white fixed navy-blue">Years in Office</th>
+                <th class="font-white fixed navy-blue">Percentage of Votes</th>
+            </tr>
+            <tbody id="tabledata">
 
-        <tr class="navy-blue">
-            <th class="font-white">House</th>
-            <th class="font-white ">Party
-            <th class="font-white">
-                State
-                <div>
-                    <select name="Filter by state" id="select-filter">
-                        <!-- <option selected="selected">Select Your Beverage</option> -->
-                        <!-- <option value="none" selected disabled="selected">
-                                        Filter by state </option> -->
-                        <option value="all">All</option>
-                    </select>
-                </div>
-            </th>
-            <th class="font-white">Years in Office</th>
-            <th class="font-white">Percentage of Votes</th>
-        </tr>
-        </thead>
-
-        <tbody id="tabledata">
-        </tbody>
-
-    </table>
+            </tbody>
+        </table>
+    </div>
 
     <div id="loader"></div>
 
 
 
-    <button type="button" class="btn btn-info" data-target="#top"><a href="#top" class="font-white text-deco"> Back to
-            the top</a>
-    </button>
-
     <footer class="page-footer font-small blue">
         <div class="footer-copyright text-center py-3"> &copy; 2019 Copyright: All Rights Reserved
         </div>
         <div class="social">
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-linkedin"></a>
-            <a href="#" class="fa fa-google"></a>
+            <a href="https://www.facebook.com/" target="=_blank" class="fa fa-facebook"></a>
+            <a href="https://twitter.com/" target="=_blank" class="fa fa-twitter"></a>
+            <a href="https://www.linkedin.com/" target="=_blank" class="fa fa-linkedin"></a>
         </div>
     </footer>
 

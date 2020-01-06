@@ -1,10 +1,11 @@
 let senateUrl = "https://api.propublica.org/congress/v1/113/senate/members.json";
 let houseUrl = "https://api.propublica.org/congress/v1/113/house/members.json";
-// let tableBody5 = document.getElementById("tabledata");
-
+let republican = document.querySelector('#republican');
+let democrats = document.querySelector('#democrat')
+let independents = document.querySelector('#independent')
+let states = document.querySelector('#select-filter')
 
 let members = []
-
 
 function getRemoteData() {
     if (window.location.href.includes("senate")) {
@@ -18,11 +19,9 @@ function getRemoteData() {
             })
             .then((data) => {
                 members = data.results[0].members;
-                console.log(members)
                 buildSenatorPage(members)
                 document.getElementById("loader").style.display = "none";
             });
-
 
     } else if (window.location.href.includes("house")) {
         fetch(houseUrl, {
@@ -35,7 +34,6 @@ function getRemoteData() {
             })
             .then((data) => {
                 members = data.results[0].members;
-                console.log(members)
                 buildHousePage(members)
                 document.getElementById("loader").style.display = "none";
             });
@@ -44,18 +42,13 @@ function getRemoteData() {
 
 getRemoteData()
 
+//Build the senate table 
 function buildSenatorPage(members) {
     if (window.location.href.includes("senate-data")) {
-        console.log(members)
         document.getElementById("tabledata").innerHTML =
             buildChamberTable(members)
         listOfStates()
-        // document.getElementById("tabledata").innerHTML =
-        //     populateFilterTable(members)
-        // filter(members)
     } else if (window.location.href.includes("senate-attendance")) {
-        console.log(members)
-        console.log("hello")
         document.getElementById("senate-attendance").innerHTML =
             buildChamberGlance(members)
 
@@ -73,22 +66,17 @@ function buildSenatorPage(members) {
 
         document.getElementById("least-loyal").innerHTML =
             buildLeastLoyalTable(members)
-
-
     }
 }
 
 
-
+//Build the house table 
 function buildHousePage(members) {
     if (window.location.href.includes("house-data")) {
-        console.log(members)
         document.getElementById("tabledata").innerHTML =
             buildChamberTable(members)
         listOfStates()
     } else if (window.location.href.includes("house-attendance")) {
-        console.log(members)
-        console.log("hello")
         document.getElementById("house-attendance").innerHTML =
             buildChamberGlance(members)
 
@@ -109,10 +97,7 @@ function buildHousePage(members) {
 }
 
 
-
-
-
-
+//Build the senate at glance table
 function buildChamberGlance(members) {
     let table = ""
     let chamberStatistics = statisticsObject(members)
@@ -125,9 +110,7 @@ function buildChamberGlance(members) {
     for (let member in chamberStatistics.numberOfDemocrats) {
         percentageForDemocrats.push(chamberStatistics.numberOfDemocrats[member].votes_with_party_pct)
     }
-    console.log(percentageForDemocrats)
     averagePercentageForDemocrats = percentageForDemocrats.reduce((a, b) => a + b, 0) / percentageForDemocrats.length
-    console.log(averagePercentageForDemocrats)
 
 
     // Find average % Voted with Party For Independents
@@ -137,12 +120,11 @@ function buildChamberGlance(members) {
     for (let member in chamberStatistics.numberOfIndependents) {
         percentageForIndenpendents.push(chamberStatistics.numberOfIndependents[member].votes_with_party_pct)
     }
-    console.log(percentageForIndenpendents)
+
     averagePercentageForIndependents = percentageForIndenpendents.reduce((a, b) => a + b, 0) / percentageForIndenpendents.length
-    if (averagePercentageForIndependents == NaN) {
-        averagePercentageForIndependents = 0
-    }
-    console.log(averagePercentageForIndependents)
+
+    averagePercentageForIndependents = averagePercentageForIndependents || 0
+
 
     // Find average % Voted with Party For Republicans
     let percentageForRepublicans = []
@@ -151,9 +133,7 @@ function buildChamberGlance(members) {
     for (let member in chamberStatistics.numberOfRepublicans) {
         percentageForRepublicans.push(chamberStatistics.numberOfRepublicans[member].votes_with_party_pct)
     }
-    console.log(percentageForRepublicans)
     averagePercentageForRepublicans = percentageForRepublicans.reduce((a, b) => a + b, 0) / percentageForRepublicans.length
-    console.log(averagePercentageForRepublicans)
 
 
     //Find average % Voted for Total
@@ -164,9 +144,7 @@ function buildChamberGlance(members) {
     }
     averagePercentageForTotalPartyMembers = percentageForTotalPartyMembers.reduce((a, b) => a + b, 0) / percentageForTotalPartyMembers.length
 
-    console.log(percentageForTotalPartyMembers)
     averagePercentageForTotalPartyMembers = percentageForTotalPartyMembers.reduce((a, b) => a + b, 0) / percentageForTotalPartyMembers.length
-    console.log(averagePercentageForTotalPartyMembers)
 
 
     table += "<tr><td>" +
@@ -182,7 +160,6 @@ function buildChamberGlance(members) {
 
 //Least Engaged (Bottom 10% Attendance)
 
-
 function buildMostEngaged(members) {
     let table = ""
     sortMembers = members
@@ -195,11 +172,6 @@ function buildMostEngaged(members) {
     for (member in sorted) {
         if (member < ((sorted.length) * 0.1))
             bottomTenPercentOfMissedVotes.push(members[member])
-    }
-    console.log(bottomTenPercentOfMissedVotes)
-
-    for (let i = 0; i < bottomTenPercentOfMissedVotes.length; i++) {
-        console.log(bottomTenPercentOfMissedVotes[i].first_name)
     }
 
     for (let member in bottomTenPercentOfMissedVotes) {
@@ -214,8 +186,6 @@ function buildMostEngaged(members) {
     return table;
 }
 
-
-
 function buildLeastEngaged() {
     let table = ""
     topTenPercentOfMissedVotes = [];
@@ -229,11 +199,7 @@ function buildLeastEngaged() {
         if (member < ((sorted.length) * 0.1))
             topTenPercentOfMissedVotes.push(members[member])
     }
-    console.log(topTenPercentOfMissedVotes)
 
-    for (let i = 0; i < topTenPercentOfMissedVotes.length; i++) {
-        console.log(topTenPercentOfMissedVotes[i].first_name)
-    }
 
     for (let member in topTenPercentOfMissedVotes) {
         if (topTenPercentOfMissedVotes[member].middle_name == null) {
@@ -246,10 +212,6 @@ function buildLeastEngaged() {
     }
     return table;
 }
-
-
-
-
 
 function statisticsObject(members) {
     let statistics = {
@@ -276,13 +238,10 @@ function statisticsObject(members) {
             statistics.numberOfRepublicans.push(members[member])
         }
     };
-    console.log(statistics.numberOfDemocrats.length)
-    console.log(statistics.numberOfIndependents.length)
-    console.log(statistics.numberOfRepublicans.length)
+
     return statistics
 
 }
-
 
 function buildChamberTable(members) {
     let table = ''
@@ -330,8 +289,6 @@ function buildMostLoyalTable(member) {
     return table;
 }
 
-
-
 function buildLeastLoyalTable(member) {
     let table = ""
     let topTenPercentVotesWithParty = [];
@@ -374,7 +331,6 @@ function listOfStates() {
     let unique = arrayofStates.filter(function (item, i, ar) {
         return ar.indexOf(item) === i;
     })
-    console.log(unique.sort())
 
     for (var i = 0; i < unique.length; i++) {
         let states = document.createElement("option");
@@ -383,13 +339,6 @@ function listOfStates() {
         statesList.appendChild(states)
     }
 }
-
-
-let republican = document.querySelector('#republican');
-let democrats = document.querySelector('#democrat')
-let independents = document.querySelector('#independent')
-let states = document.querySelector('#select-filter')
-
 
 function filter() {
     let filteredArray = [];
@@ -413,38 +362,28 @@ function filter() {
     return filteredArray;
 }
 
-
-
-
-
 democrats.addEventListener("click", function () {
     let filteredArray = filter();
-    // console.log(filteredArray)
     document.getElementById("tabledata").innerHTML = table(filteredArray)
 });
 
 
 republican.addEventListener("click", function () {
     let filteredArray = filter();
-    // console.log(filteredArray)
     document.getElementById("tabledata").innerHTML = table(filteredArray)
 });
 
 
 independents.addEventListener("click", function () {
     let filteredArray = filter();
-    // console.log(filteredArray)
     document.getElementById("tabledata").innerHTML = table(filteredArray)
 });
 
 
 states.addEventListener("change", function () {
     let filteredArray = filter();
-    console.log(filteredArray)
     document.getElementById("tabledata").innerHTML = table(filteredArray)
 });
-
-
 
 function table(members) {
     let tableBody = ""
@@ -462,8 +401,6 @@ function table(members) {
     }
     return tableBody
 }
-
-
 
 function showMoreOrLess() {
     let dots = document.getElementById("dots");

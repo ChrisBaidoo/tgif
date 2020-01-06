@@ -67,63 +67,70 @@
         </div>
     </nav>
 
-    <div class="jumbotron">
-        <h2>Senators</h2>
-        <p>
-            First convened in 1789, the composition and powers of the Senate are
-            established in Article One of the U.S. Constitution. Each state is
-            represented by two senators, regardless of population, who serve staggered
-            six-year terms. The Senate has several exclusive powers not granted to the
-            House, including consenting to treaties as a precondition to their
-            ratification and consenting to or confirming appointments of Cabinet
-            secretaries, federal judges, other federal executive officials, military
-            officers, regulatory officials, ambassadors, and other federal uniformed
-            officers, as well as trial of federal officials impeached by the House.
-        </p>
-    </div>
+    <section class="card">
+        <div class="card-body">
+            <div id="loader"></div>
+
+            <div class="jumbotron">
+                <h2>Senators</h2>
+                <p>
+                    First convened in 1789, the composition and powers of the Senate are
+                    established in Article One of the U.S. Constitution. Each state is
+                    represented by two senators, regardless of population, who serve staggered
+                    six-year terms. The Senate has several exclusive powers not granted to the
+                    House, including consenting to treaties as a precondition to their
+                    ratification and consenting to or confirming appointments of Cabinet
+                    secretaries, federal judges, other federal executive officials, military
+                    officers, regulatory officials, ambassadors, and other federal uniformed
+                    officers, as well as trial of federal officials impeached by the House.
+                </p>
+            </div>
+
+            <form class="checkbox">
+                <span class="font-italic">Filter by:</span> &ensp;
+
+                <input type="checkbox" id="republican" class="checkbox">
+                <label for="republican">Republican</label>
+                <input type="checkbox" id="democrat">
+                <label for="democrat">Democrat</label>
+                <input type="checkbox" id="independent">
+                <label for="independent">Independent</label>
+            </form>
 
 
-
-    <form class="checkbox">
-        <span class="font-italic">Filter by:</span> &ensp;
-
-        <input type="checkbox" id="republican" class="checkbox">
-        <label for="republican">Republican</label>
-        <input type="checkbox" id="democrat">
-        <label for="democrat">Democrat</label>
-        <input type="checkbox" id="independent">
-        <label for="independent">Independent</label>
-    </form>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
 
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
-        <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped table-hover">
 
 
-            <tr>
-                <th class="font-white fixed navy-blue">Senator</th>
-                <th class="font-white fixed navy-blue">Party
-                <th class="font-white fixed navy-blue">
-                    State
-                    <div>
-                        <select name="Filter by state" id="select-filter">
-                            <option value="all">All</option>
-                        </select>
-                    </div>
-                </th>
-                <th class="font-white fixed navy-blue">Years in Office</th>
-                <th class="font-white fixed navy-blue">Percentage of Votes</th>
-            </tr>
-            <tbody id="tabledata">
+                    <tr>
+                        <th class="font-white fixed navy-blue">Senator</th>
+                        <th class="font-white fixed navy-blue">Party
+                        <th class="font-white fixed navy-blue">
+                            State
+                            <div>
+                                <select name="Filter by state" id="select-filter">
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                        </th>
+                        <th class="font-white fixed navy-blue">Years in Office</th>
+                        <th class="font-white fixed navy-blue">Percentage of Votes</th>
+                    </tr>
+                    <tbody id="tabledata">
 
-            </tbody>
-        </table>
-    </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
 
 
     <footer class="page-footer font-small blue">
-        <div class="footer-copyright text-center py-3"> &copy; 2019 Copyright: All Rights Reserved
+        <div class="footer-copyright text-center py-3"> &copy; 2020 Copyright: All Rights Reserved
         </div>
         <div class="social">
             <a href="https://www.facebook.com/" target="=_blank" class="fa fa-facebook"></a>
@@ -132,8 +139,7 @@
         </div>
     </footer>
 
-    <script src="./newtest.js"></script>
-
+    <script src="./js/main.js"></script>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
